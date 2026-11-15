@@ -1,0 +1,23 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        a=[]
+        for i in tokens:
+            if i.isdigit():
+                a.append(int(i))
+            elif i=='+':
+                a.append(a.pop()+a.pop())
+            elif i=='-':
+                b=a.pop()
+                c=a.pop()
+                a.append(c-b)
+            elif i=='*':
+                a.append(a.pop()*a.pop())
+            elif i=='/':
+                b=a.pop()
+                c=a.pop()
+                a.append(int(float(c)/b))
+        return a[0]
+            
+
+
+        
